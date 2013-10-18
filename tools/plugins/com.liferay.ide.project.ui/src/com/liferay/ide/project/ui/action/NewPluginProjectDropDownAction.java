@@ -17,14 +17,10 @@ package com.liferay.ide.project.ui.action;
 
 import com.liferay.ide.core.util.CoreUtil;
 import com.liferay.ide.project.core.ISDKTemplate;
-import com.liferay.ide.project.core.LiferayProjectCore;
-import com.liferay.ide.project.ui.ProjectUIPlugin;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionPoint;
@@ -34,7 +30,6 @@ import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuCreator;
 import org.eclipse.jface.action.Separator;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.widgets.Control;
@@ -99,26 +94,26 @@ public class NewPluginProjectDropDownAction extends Action implements IMenuCreat
                 {
                     containers.add( new NewWizardAction( element ) );
 
-                    ISDKTemplate[] sdkTemplates = LiferayProjectCore.getSDKTemplates();
-
-                    List<ISDKTemplate> sdkTemplateList = Arrays.asList( sdkTemplates );
-
-                    Collections.sort( sdkTemplateList, new SDKTemplateComparator() );
-
-                    for( ISDKTemplate template : sdkTemplates )
-                    {
-                        NewWizardAction wizardAction = new NewWizardAction( element );
-                        wizardAction.setProjectType( template.getFacetId() );
-
-                        if( template != null )
-                        {
-                            wizardAction.setImageDescriptor( ImageDescriptor.createFromURL( ProjectUIPlugin.getDefault().getBundle().getEntry(
-                                "/icons/n16/" + template.getShortName() + "_new.png" ) ) ); //$NON-NLS-1$ //$NON-NLS-2$
-                            wizardAction.setText( wizardAction.getText().replaceAll( Msgs.liferayPlugin, NLS.bind( Msgs.plugin, template.getDisplayName()) ));
-                        }
-
-                        containers.add( wizardAction );
-                    }
+//                    ISDKTemplate[] sdkTemplates = LiferayProjectCore.getSDKTemplates();
+//
+//                    List<ISDKTemplate> sdkTemplateList = Arrays.asList( sdkTemplates );
+//
+//                    Collections.sort( sdkTemplateList, new SDKTemplateComparator() );
+//
+//                    for( ISDKTemplate template : sdkTemplates )
+//                    {
+//                        NewWizardAction wizardAction = new NewWizardAction( element );
+//                        wizardAction.setProjectType( template.getFacetId() );
+//
+//                        if( template != null )
+//                        {
+//                            wizardAction.setImageDescriptor( ImageDescriptor.createFromURL( ProjectUIPlugin.getDefault().getBundle().getEntry(
+//                                "/icons/n16/" + template.getShortName() + "_new.png" ) ) ); //$NON-NLS-1$ //$NON-NLS-2$
+//                            wizardAction.setText( wizardAction.getText().replaceAll( Msgs.liferayPlugin, NLS.bind( Msgs.plugin, template.getDisplayName()) ));
+//                        }
+//
+//                        containers.add( wizardAction );
+//                    }
                 }
             }
         }
@@ -192,15 +187,19 @@ public class NewPluginProjectDropDownAction extends Action implements IMenuCreat
             // }
 
             // only do the first project action (not the 5 separate ones)
-            actions[0].setShell( fWizardShell );
-            ActionContributionItem item = new ActionContributionItem( actions[0] );
-            item.fill( fMenu, -1 );
+
+            for( NewWizardAction action : actions )
+            {
+                action.setShell( fWizardShell );
+                ActionContributionItem item = new ActionContributionItem(action);
+                item.fill(fMenu, -1);
+            }
 
             new Separator().fill( fMenu, -1 );
 
             NewWizardAction importAction = new ImportLiferayProjectWizardAction();
             importAction.setShell( fWizardShell );
-            item = new ActionContributionItem( importAction );
+            ActionContributionItem item = new ActionContributionItem( importAction );
             item.fill( fMenu, -1 );
 
             NewWizardAction[] extraActions = getExtraProjectActions();

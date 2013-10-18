@@ -162,21 +162,20 @@
             shortName="ext">
       </sdkTemplate>
    </extension>
-
-
    <extension
-       point="com.liferay.ide.project.core.portletFrameworkWizardProviders">
-    <portletFrameworkWizardProvider
-          class="com.liferay.ide.portlet.core.MVCPortletFrameworkWizardProvider"
-          default="true"
-          description="%portlet.framework.description"
-          displayName="%portlet.framework.display.name"
-          helpUrl="http://www.liferay.com/documentation/liferay-portal/6.1/development"
-          id="com.liferay.ide.project.core.framework.mvc"
-          requiredSDKVersion="6.0.1"
-          shortName="mvc">
-    </portletFrameworkWizardProvider>
-    </extension>
+         point="com.liferay.ide.project.core.portletFrameworks">
+      <portletFramework
+            class="com.liferay.ide.portlet.core.MVCPortletFramework"
+            default="true"
+            description="%portlet.framework.description"
+            displayName="%portlet.framework.display.name"
+            helpUrl="http://www.liferay.com/documentation/liferay-portal/6.1/development"
+            id="com.liferay.ide.project.core.framework.mvc"
+            requiredSDKVersion="6.0.1"
+            shortName="mvc">
+      </portletFramework>
+   </extension>
+
    <extension
          point="org.eclipse.wst.xml.core.catalogContributions">
       <catalogContribution

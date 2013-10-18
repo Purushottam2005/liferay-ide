@@ -17,9 +17,7 @@
 
 package com.liferay.ide.project.core;
 
-import org.eclipse.wst.common.frameworks.datamodel.IDataModel;
 import org.eclipse.wst.common.project.facet.core.IFacetedProjectTemplate;
-import org.eclipse.wst.common.project.facet.core.IFacetedProjectWorkingCopy;
 import org.eclipse.wst.common.project.facet.core.IProjectFacet;
 
 /**
@@ -41,7 +39,5 @@ public interface ISDKTemplate
     public int getMenuIndex();
 
     public String getShortName();
-
-    public void setupNewProject( IDataModel dataModel, IFacetedProjectWorkingCopy facetedProject );
 
 }

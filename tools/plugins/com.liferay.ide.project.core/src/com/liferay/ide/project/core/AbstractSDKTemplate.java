@@ -15,11 +15,7 @@
 
 package com.liferay.ide.project.core;
 
-import com.liferay.ide.project.core.util.ProjectUtil;
-
-import org.eclipse.wst.common.frameworks.datamodel.IDataModel;
 import org.eclipse.wst.common.project.facet.core.IFacetedProjectTemplate;
-import org.eclipse.wst.common.project.facet.core.IFacetedProjectWorkingCopy;
 import org.eclipse.wst.common.project.facet.core.IProjectFacet;
 import org.eclipse.wst.common.project.facet.core.ProjectFacetsManager;
 
@@ -103,15 +99,5 @@ public abstract class AbstractSDKTemplate implements ISDKTemplate
     {
         this.shortName = shortName;
     }
-
-    public final void setupNewProject( IDataModel dataModel, IFacetedProjectWorkingCopy facetedProject )
-    {
-        // dont' generate deployment descriptor
-        ProjectUtil.setGenerateDD( dataModel, false );
-
-        setupNewFacetedProject( dataModel, facetedProject );
-    }
-
-    public abstract void setupNewFacetedProject( IDataModel dataModel, IFacetedProjectWorkingCopy facetedProject );
 
 }

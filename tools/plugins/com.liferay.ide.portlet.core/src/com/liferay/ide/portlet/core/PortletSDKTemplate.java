@@ -18,8 +18,6 @@
 package com.liferay.ide.portlet.core;
 
 import com.liferay.ide.project.core.AbstractSDKTemplate;
-import com.liferay.ide.project.core.IPortletFrameworkWizardProvider;
-import com.liferay.ide.project.core.LiferayProjectCore;
 import com.liferay.ide.project.core.facet.IPluginFacetConstants;
 import com.liferay.ide.project.core.facet.IPluginProjectDataModelProperties;
 
@@ -42,7 +40,6 @@ public class PortletSDKTemplate extends AbstractSDKTemplate implements IPluginPr
         super();
     }
 
-    @Override
     public void setupNewFacetedProject( IDataModel dataModel, IFacetedProjectWorkingCopy facetedProject )
     {
         FacetDataModelMap map = (FacetDataModelMap) dataModel.getProperty( FACET_DM_MAP );
@@ -67,10 +64,11 @@ public class PortletSDKTemplate extends AbstractSDKTemplate implements IPluginPr
 
         // need to allow portlet framework to do any additional configuration
 
-        String portletFrameworkId = dataModel.getStringProperty( PORTLET_FRAMEWORK_ID );
-
-        IPortletFrameworkWizardProvider portletFramework = LiferayProjectCore.getPortletFramework( portletFrameworkId );
-
-        portletFramework.configureNewProject( dataModel, facetedProject );
+//        String portletFrameworkId = dataModel.getStringProperty( PORTLET_FRAMEWORK_ID );
+//
+//        IPortletFrameworkWizardProvider portletFramework =
+//            LiferayProjectCore.getPortletFrameworkWizardProvider( portletFrameworkId );
+//
+//        portletFramework.configureNewProject( dataModel, facetedProject );
     }
 }

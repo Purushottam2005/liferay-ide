@@ -32,7 +32,6 @@ import org.eclipse.wst.common.project.facet.core.IFacetedProjectWorkingCopy;
 public class ThemeSDKTemplate extends AbstractSDKTemplate implements IPluginProjectDataModelProperties
 {
 
-    @Override
     public void setupNewFacetedProject( IDataModel dataModel, IFacetedProjectWorkingCopy facetedProject )
     {
         FacetDataModelMap map = (FacetDataModelMap) dataModel.getProperty( FACET_DM_MAP );
