@@ -448,7 +448,7 @@ public class ProjectUtil
 
         SDKPluginFacetUtil.configureProjectAsPlugin( fpwc, runtime, pluginType, sdkLocation, projectRecord );
 
-        if( PluginType.portlet.name().equals( pluginType ) )
+        if( op != null && PluginType.portlet.name().equals( pluginType ) )
         {
             IPortletFramework portletFramework = op.getPortletFramework().content( true );
             portletFramework.configureNewProject( newProjectDataModel, fpwc );

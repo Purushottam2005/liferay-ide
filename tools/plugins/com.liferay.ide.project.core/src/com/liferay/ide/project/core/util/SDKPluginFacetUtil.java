@@ -300,11 +300,10 @@ public class SDKPluginFacetUtil
         throws CoreException
     {
         Action action = fpjwc.getProjectFacetAction( requiredFacet );
-        Object config = action.getConfig();
 
-        if( config instanceof IDataModel )
+        if( action != null )
         {
-            IDataModel dm = (IDataModel) config;
+            IDataModel dm = (IDataModel) action.getConfig();
 
             if( preset.getId().contains( "portlet" ) ) //$NON-NLS-1$
             {
